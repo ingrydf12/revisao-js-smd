@@ -1,0 +1,11 @@
+table { width: 100%; border-collapse: collapse; }
+th, td { padding: 8px; border: 1px solid #ccc; }
+th { background: #f0f0f0; cursor: pointer; }
+.paginacao {
+    margin-top: 10px;
+    text-align: center;
+}
+.paginacao button {
+    margin: 0 5px;
+    padding: 5px 10px;
+}

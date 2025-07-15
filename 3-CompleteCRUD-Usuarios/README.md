@@ -1,12 +1,15 @@
 # 📚 Aplicação de Geração e Manipulação de Usuários Fictícios
 
-Este projeto foi desenvolvido como parte da disciplina **Autoração Multimídia II** do curso de **Bacharelado em Sistemas e Mídias Digitais** da **Universidade Federal do Ceará (UFC)**.
+Este projeto foi desenvolvido e faz parte do **Trabalho 2: Final** como parte da disciplina **Autoração Multimídia II** do curso de **Bacharelado em Sistemas e Mídias Digitais** da **Universidade Federal do Ceará (UFC)**.
 
-## 👨‍🏫 Autor
+## 👨‍🏫 Autores
 
 **Prof. Wellington W. F. Sarmento**  
 Instituto Universidade Virtual (UFC Virtual)
 Universidade Federal do Ceará (UFC)
+
+**Ingryd Cordeiro Duarte** 
+Graduanda em Sistemas e Mídias Digitais (UFC)
 
 ---
 
@@ -42,8 +45,6 @@ Você pode acessar um tutorial completo sobre estra aplicação de exemplo atrav
 
 ## 📘 Funcionalidades
 
-Nota: Funcionalidades incrementadas por mim, **Ingryd**, são marcadas pelo RF005 E RF006.
-
 | ID     | Descrição                                                                | Implementado |
 | ------ | ------------------------------------------------------------------------ | ------------ |
 | RF0001 | Gerar usuários fictícios com nome, idade, endereço e e-mail              | ☑️           |
@@ -53,7 +54,7 @@ Nota: Funcionalidades incrementadas por mim, **Ingryd**, são marcadas pelo RF00
 | RF0005 | Atualizar os dados de um usuário (pelo ID)                               | ☑️           |
 | RF0006 | Remover um usuário do sistema (pelo ID)                                  | ☑️           |
 | RNF001 | Salvar e manter persistência dos usuários em arquivo JSON                | ⬜           |
-| RNF002 | Paginar os usuários usando API (/list-users/:count?)                     | ⬜           |
+| RNF002 | Paginar os usuários usando API (/list-users/:count?)                     | ☑️           |
 
 ---
 
@@ -79,7 +80,7 @@ Para que você possa usar corretamente este projeto é preciso criar o arquivo `
 node gerar_usuarios_fake.js
 ```
 
-O funcionamento da funcionalidade de geração dos usuários _fake_ se eoncontra no arquivo `criando-json-usuarios.md`, que pode ser acessado através deste link: [acesso à explicação]("./criando-json-usuarios.md").
+O funcionamento da funcionalidade de geração dos usuários _fake_ se eoncontra no arquivo `criando-json-usuarios.md`, que pode ser acessado através deste link: [acesso à explicação](criando-json-usuarios.md).
 
 ---
 

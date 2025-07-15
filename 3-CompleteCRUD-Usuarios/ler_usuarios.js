@@ -1,20 +1,15 @@
-let usuarios;
-const fs = require("fs");
-const path = require("path");
+import fs from "fs";
 
-function lerUsuarios() {
+export function lerUsuarios(usuarios) {
   try {
-    const dados = fs.readFileSync("usuarios.json", "utf-8"); // Lê o conteúdo do arquivo
-    const usuarios = JSON.parse(dados); // Converte a string JSON em array de objetos
-
-    return usuarios;
+    const dados = fs.readFileSync("usuarios.json", "utf-8");
+    usuarios = JSON.parse(dados);
   } catch (erro) {
-    // Em caso de erro (arquivo ausente ou malformado), exibe no console e retorna array vazio
     console.error("Erro ao ler o arquivo usuarios.json:", erro);
-    return [];
+    usuarios = [];
   }
+
+  return usuarios;
 }
 
-usuarios = lerUsuarios();
-
-console.log(usuarios.length);
+export default lerUsuarios;

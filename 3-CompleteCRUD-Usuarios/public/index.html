@@ -3,34 +3,46 @@
   <head>
     <meta charset="UTF-8" />
     <title>Tabela de Usuários com Paginação</title>
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="styles/style.css" />
   </head>
   <body>
-    <h1>👥 Lista de Usuários com Paginação</h1>
-    <menu>
-      <a href="cadastra_usuario.html" rel="noopener noreferrer"
-        >Cadastrar Usuário</a
-      >
-    </menu>
-    <table id="tabelaUsuarios">
-      <thead>
-        <tr>
-          <th onclick="ordenarTabela('nome')">Nome ⬍</th>
-          <th onclick="ordenarTabela('idade')">Idade ⬍</th>
-          <th>Endereço</th>
-          <th>Email</th>
-          <th>Ações</th>
-        </tr>
-      </thead>
-      <tbody></tbody>
-    </table>
-
-    <div class="paginacao">
-      <button onclick="paginaAnterior()">⬅ Anterior</button>
-      Página <span id="paginaAtual">1</span> de <span id="totalPaginas">1</span>
-      <button onclick="proximaPagina()">Próxima ➡</button>
+    <div class="header-massa-pro-uel-ficar-feliz">
+      <img
+        src="https://optimise2.assets-servd.host/utter-seal/production/uploads/Dune-web-header.jpg?w=1200&h=675&q=75&fm=jpg&fit=crop&dm=1706211751&s=366b67bde5fdbc69c999c2290a0c5410"
+        alt="Header massa"
+      />
+      <div class="overlay"></div>
+      <h1>Lista de Usuários com Paginação</h1>
     </div>
 
+    <header>
+      <menu>
+        <a href="pages/cadastra_usuario.html" rel="noopener noreferrer"
+          >Cadastrar Usuário</a
+        >
+      </menu>
+    </header>
+    <main>
+      <table id="tabelaUsuarios">
+        <thead>
+          <tr>
+            <th onclick="ordenarTabela('nome')">Nome ⬍</th>
+            <th onclick="ordenarTabela('idade')">Idade ⬍</th>
+            <th>Endereço</th>
+            <th>Email</th>
+            <th>Ações</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+
+      <div class="paginacao">
+        <button onclick="paginaAnterior()">⬅ Anterior</button>
+        Página <span id="paginaAtual">1</span> de
+        <span id="totalPaginas">1</span>
+        <button onclick="proximaPagina()">Próxima ➡</button>
+      </div>
+    </main>
     <script src="script.js"></script>
   </body>
 </html>

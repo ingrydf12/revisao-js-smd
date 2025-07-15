@@ -2,10 +2,11 @@
   "name": "aplicaco-crud-usuario",
   "version": "1.0.0",
   "description": "Aplicação para fins didáticos explicando como fazer um crud de usuários usando o node.js, express e JSON.",
-  "main": "server.js",
+  "main": "server/server.js",
+  "type": "module",
   "scripts": {
-    "start": "node --env-file=.env server.js ",
-    "dev": "nodemon --env-file=.env server.js"
+    "start": "node --env-file=.env server/server.js ",
+    "dev": "nodemon --env-file=.env server/server.js"
   },
   "keywords": [
     "usuarios",

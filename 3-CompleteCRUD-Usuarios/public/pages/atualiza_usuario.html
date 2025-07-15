@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Edição de usuários</title>
+    <link rel="stylesheet" href="../style.css" />
+  </head>
+  <body>
+    <main>
+      <h1>Edição de usuário</h1>
+      <form id="formulario">
+        <input type="text" id="nome" placeholder="Nome" />
+        <input type="number" id="idade" placeholder="Idade" />
+        <input type="text" id="endereco" placeholder="Endereço" />
+        <input type="email" id="email" placeholder="Email" />
+        <button type="submit">Editar usuário</button>
+      </form>
+      <div id="mensagem"></div>
+      <div id="novoUsuario"></div>
+      <div class="navegacao_paginas">
+        <a href="../index.html">Retornar ao Home</a>
+      </div>
+    </main>
+    <script>
+      const id = new URLSearchParams(window.location.search).get("id");
+      const formulario = document.getElementById("formulario");
+
+      formulario.addEventListener("submit", async (event) => {
+        event.preventDefault();
+
+        const dadosAtualizados = {
+          nome: document.getElementById("nome").value,
+          idade: Number(document.getElementById("idade").value),
+          endereco: document.getElementById("endereco").value,
+          email: document.getElementById("email").value,
+        };
+
+        try {
+          const resposta = await fetch(`/api/update-user/${id}`, {
+            method: "PUT",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(dadosAtualizados),
+          });
+
+          if (!resposta.ok) {
+            throw new Error("Erro ao atualizar usuário");
+          } else {
+            alert("Usuário atualizado com sucesso!");
+          }
+
+          window.location.href = "../index.html";
+        } catch (error) {
+          console.error(error);
+          alert("Erro ao atualizar usuário");
+        }
+      });
+    </script>
+  </body>
+</html>

@@ -4,22 +4,24 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Cadastra Usuários</title>
+    <link rel="stylesheet" href="../styles/cadastro-usuario.css" />
   </head>
   <body>
-    <h1>Cadastra Usuários</h1>
-    <form id="formulario">
-      <!-- Campos do formulário -->
-      <input type="text" id="nome" placeholder="Nome" />
-      <input type="number" id="idade" placeholder="Idade" />
-      <input type="text" id="endereco" placeholder="Endereço" />
-      <input type="email" id="email" placeholder="Email" />
-      <button type="submit">Cadastrar</button>
-    </form>
-    <div id="mensagem"></div>
-    <div id="novoUsuario"></div>
-    <div class="navegacao_paginas">
-      <a href="index.html">Retornar ao Home</a>
-    </div>
+    <main class="cadastra-usuario">
+        <h1>Cadastra Usuários</h1>
+      <form id="formulario" class="form-cadastro">
+          <input type="text" id="nome" placeholder="Nome" />
+         <input type="number" id="idade" placeholder="Idade" />
+         <input type="text" id="endereco" placeholder="Endereço" />
+        <input type="email" id="email" placeholder="Email" />
+        <button type="submit">Cadastrar</button>
+      </form>
+      <div id="mensagem"></div>
+      <div id="novoUsuario"></div>
+      <div class="navegacao_paginas">
+        <a href="../index.html">Retornar ao Home</a>
+      </div>
+    </main>
     <script>
       const formulario = document.getElementById("formulario");
       formulario.addEventListener("submit", (event) => {
@@ -52,14 +54,6 @@
               mensagem.textContent = "Erro ao cadastrar usuário.";
             }
           })
-          // .then((data) => { // Processa a resposta da API
-          //     const mensagem = document.getElementById("mensagem");
-          //     if (data.ok) {
-          //       mensagem.textContent = "Usuário cadastrado com sucesso!";
-          //     } else {
-          //       mensagem.textContent = "Erro ao cadastrar usuário.";
-          //     }
-          //   })
           .catch((error) => {
             console.error("Erro:", error);
           });

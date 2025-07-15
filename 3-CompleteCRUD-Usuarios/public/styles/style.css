@@ -1,0 +1,127 @@
+@import url("https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&display=swap");
+
+:root {
+  font-family: "Lexend", sans-serif;
+  background-color: #222121;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+
+  --bg-color: #222121;
+}
+
+.header-massa-pro-uel-ficar-feliz {
+  position: relative;
+  width: 100%;
+  height: 20rem;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.header-massa-pro-uel-ficar-feliz img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.header-massa-pro-uel-ficar-feliz .overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    rgba(0, 0, 0, 0.8),
+    rgba(0, 0, 0, 0.5)
+  );
+  z-index: 1;
+}
+
+.header-massa-pro-uel-ficar-feliz h1 {
+  position: absolute;
+  z-index: 2;
+  color: white;
+  font-size: 2.5rem;
+  font-weight: bold;
+  text-align: center;
+}
+
+header {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 1rem;
+}
+
+body {
+  background-color: var(--bg-color);
+  color: #fff;
+  margin-bottom: 1.5rem;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  background-color: var(--bg-color);
+  padding: 0 1.5rem;
+}
+
+a {
+  color: #68abf3;
+  text-decoration: underline;
+}
+
+button {
+  background-color: #6a319c;
+  color: #fff;
+  font-weight: bold;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #391757;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  align-items: flex-start;
+}
+
+input {
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+th,
+td {
+  padding: 8px;
+  border: 1px solid #ccc;
+  text-align: center;
+}
+th {
+  background: #f0f0f0;
+  cursor: pointer;
+  color: #333;
+}
+.paginacao {
+  margin-top: 10px;
+  text-align: center;
+}
+.paginacao button {
+  margin: 0 5px;
+  padding: 5px 10px;
+}

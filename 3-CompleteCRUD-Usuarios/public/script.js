@@ -1,11 +1,6 @@
-// Array que armazenará os usuários carregados da API
 let usuarios = [];
-
-// Página inicial da tabela
 let paginaAtual = 1;
-
-// Define quantos usuários serão exibidos por página
-const usuariosPorPagina = 20;
+const userPerPage = 20;
 
 // Define o campo e a ordem (crescente ou decrescente) para a ordenação
 let ordemAtual = { campo: "nome", crescente: true };
@@ -13,7 +8,7 @@ let ordemAtual = { campo: "nome", crescente: true };
 // Função assíncrona que carrega os usuários da API
 async function carregarUsuarios() {
   // Faz uma requisição para a API que retorna 200 usuários
-  const resposta = await fetch("http://localhost:5000/list-users/200"); //Testar passando como parâmetro 1000000
+  const resposta = await fetch("http://[MUDAR_PARA_O_IP_LOCAL]/api/list-users/0"); //Testar passando como parâmetro 1000000
 
   // Converte a resposta em JSON e armazena no array global
   usuarios = await resposta.json();
@@ -22,56 +17,9 @@ async function carregarUsuarios() {
   atualizarPaginacao();
 }
 
-//MARK: - Trabalho 3: RF005 E RF006
-//Só pra redirecionar pra outra página levando o ID
+//Vai redirecionar pra outra página levando o ID no endereço (parâmetro)
 function editarUsuario(id) {
-  window.location.href = `atualiza_usuario.html?id=${id}`;
-}
-
-async function atualizarUsuario(id, dadosAtualizados) {
-  //Achei melhor usar o try-catch pra parar caso der erro no processo em ambas os requisitos
-  try {
-    const resposta = await fetch(`/update-user/${id}`, {
-      method: "PUT",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(dadosAtualizados),
-    });
-
-    const resultado = await resposta.json();
-    console.log("Usuário atualizado: ", resultado.user);
-
-    usuarios = usuarios.filter((user) => user.id !== id); //Remove o usuário antigo
-    // Adiciona o usuário atualizado (que vem no resultado.user) de volta ao array
-    usuarios.push(resultado.user);
-
-    atualizarPaginacao();
-  } catch (error) {
-    console.error("Erro ao atualizar usuário (script.js)");
-  }
-}
-
-async function deletarUsuario(id) {
-  try {
-    const resposta = await fetch(`/delete-user/${id}`, {
-      method: "DELETE",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
-
-    const resultado = await resposta.json();
-    console.log("Usuário deletado:", resultado.user);
-
-    // Atualiza o JSON local filtrando o usuário deletado
-    usuarios = usuarios.filter((user) => user.id !== id);
-
-    // Atualiza a página com a remoção do usuário
-    atualizarPaginacao();
-  } catch (error) {
-    console.error("Erro ao deletar usuário: ", id, error);
-  }
+  window.location.href = `pages/atualiza_usuario.html?id=${id}`;
 }
 
 // Função que compara duas strings, com ou sem normalização completa
@@ -141,7 +89,7 @@ function ordenarTabela(campo) {
 
 // Atualiza os dados exibidos na página atual
 function atualizarPaginacao() {
-  const totalPaginas = Math.ceil(usuarios.length / usuariosPorPagina); // Calcula o total de páginas
+  const totalPaginas = Math.ceil(usuarios.length / userPerPage); // Calcula o total de páginas
 
   // Garante que o número da página esteja dentro dos limites válidos
   paginaAtual = Math.max(1, Math.min(paginaAtual, totalPaginas));
@@ -151,8 +99,8 @@ function atualizarPaginacao() {
   document.getElementById("totalPaginas").innerText = totalPaginas;
 
   // Define os índices de início e fim para o slice do array
-  const inicio = (paginaAtual - 1) * usuariosPorPagina;
-  const fim = inicio + usuariosPorPagina;
+  const inicio = (paginaAtual - 1) * userPerPage;
+  const fim = inicio + userPerPage;
 
   // Renderiza apenas os usuários da página atual
   renderizarTabela(usuarios.slice(inicio, fim));
@@ -169,6 +117,31 @@ function proximaPagina() {
   paginaAtual++;
   atualizarPaginacao();
 }
+
+async function deletarUsuario(id) {
+  try {
+    const resposta = await fetch(`/api/delete-user/${id}`, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+
+    if (!resposta.ok) {
+      alert("Foi pro caralho")
+      return;
+    }
+
+    const resultado = await resposta.json();
+    console.log("Usuário deletado:", resultado.user);
+
+    usuarios = usuarios.filter((user) => user.id !== id);
+    atualizarPaginacao();
+  } catch (error) {
+    console.error("Erro ao deletar usuário: ", id, error);
+  }
+}
+
 
 // Função que desenha a tabela com os dados de usuários
 function renderizarTabela(data) {
@@ -190,17 +163,6 @@ function renderizarTabela(data) {
         </td>
       </tr>`;
   });
-  // Existe esta outra forma de iterar os elementos desse vetor de objetos:
-  //  for(u of data){
-  //       tbody.innerHTML += `
-  //       <tr>
-  //         <td>${u.nome}</td>
-  //         <td>${u.idade}</td>
-  //         <td>${u.endereco}</td>
-  //         <td>${u.email}</td>
-  //       </tr>`;
-  // }
 }
 
-// Quando a página for carregada, executa a função que busca os usuários
 window.onload = carregarUsuarios;
